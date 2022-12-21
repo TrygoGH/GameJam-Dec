@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -25,9 +26,9 @@ public class StartMenu : MonoBehaviour
         public string Name { get; private set; }
       
         #region constructors
-        public ButtonOBJ(Image Source, Color col, Material mat, string name, Vector3 pos)
+        public ButtonOBJ(Image Source, Color col, Material mat, string name, Vector3 pos, string parent)
         {
-            Object = Instantiate(GameObject.FindGameObjectWithTag("DefaultButton"));
+            Object = Instantiate(GameObject.FindGameObjectWithTag("DefaultButton"),GameObject.Find(parent).transform);
             Button = Object.GetComponent<Button>();
             Name = name;
             if (Name == "Start")
@@ -44,9 +45,9 @@ public class StartMenu : MonoBehaviour
             }
         }
 
-        public ButtonOBJ(string name, Vector3 pos)
+        public ButtonOBJ(string name, Vector3 pos, string parent)
         {
-            Object = Instantiate(GameObject.FindGameObjectWithTag("DefaultButton"), GameObject.FindGameObjectWithTag("ButtonHolder").transform);
+            Object = Instantiate(GameObject.FindGameObjectWithTag("DefaultButton"), GameObject.Find(parent).transform);
             Object.transform.position = pos;
             Button = Object.GetComponent<Button>();
             Name = name;
