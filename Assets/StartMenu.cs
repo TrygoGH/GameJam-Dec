@@ -65,6 +65,10 @@ public class StartMenu : MonoBehaviour
             }
         }
 
+        public ButtonOBJ(string v, Vector3 vector3)
+        {
+        }
+
         #endregion
 
 
